@@ -38,7 +38,7 @@ app.post('/publish', function (req, res) {
 			var ok = conn.createChannel();
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
-				ch.sendToQueue(q, new Buffer(req.body));
+				ch.sendToQueue(q, new Buffer(req.body.message));
 			});
 			res.send(req.body);
 		})
