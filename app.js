@@ -7,6 +7,9 @@ var q = 'tasks';
 var url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 var open = require('amqplib').connect(url);
 
+// Serve static files
+app.use(express.static(__dirname + '/public'));
+
 app.get('/consume', function (req, res) {
 	open
 		.then(function (conn) {
