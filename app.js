@@ -24,7 +24,6 @@ function listenForMessages() {
 						console.log(msg.content.toString());
 						ch.ack(msg);
             //res.send(msg.content.toString());
-            
           }
 				});
 			});
@@ -33,7 +32,7 @@ function listenForMessages() {
 		.then(null, console.warn);
   }
 
-  listenForMessages();
+  
 
 app.post('/publish', function (req, res) {
   console.log(req.body);
@@ -56,3 +55,4 @@ app.get('/', function (req, res) {
 
 app.listen(port, () => console.log(`listening on port ${port}!`)); 
 
+listenForMessages();
