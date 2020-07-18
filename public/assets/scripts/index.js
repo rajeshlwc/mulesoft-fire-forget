@@ -7,6 +7,13 @@ $(document).ready(function () {
 			url: '/consume',
 			success: function (data) {
         console.log(data);
+
+        var receivedMessages = JSON.parse(data);
+
+        $.each(receivedMessages, function(result){
+          console.log(result);
+        })
+
 			},
 		});
   }
