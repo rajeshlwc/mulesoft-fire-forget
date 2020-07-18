@@ -33,6 +33,7 @@ app.get('/consume', function (req, res) {
 });
 
 app.post('/publish', function (req, res) {
+  console.log(req.body);
 	open
 		.then(function (conn) {
 			var ok = conn.createChannel();
