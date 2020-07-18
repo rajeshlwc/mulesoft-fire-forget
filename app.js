@@ -8,7 +8,6 @@ var url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 var open = require('amqplib').connect(url);
 
 app.get('/consume', function (req, res) {
-	// Consumer
 	open
 		.then(function (conn) {
 			var ok = conn.createChannel();
@@ -28,7 +27,6 @@ app.get('/consume', function (req, res) {
 });
 
 app.get('/publish', function (req, res) {
-	// Publisher
 	open
 		.then(function (conn) {
 			var ok = conn.createChannel();
