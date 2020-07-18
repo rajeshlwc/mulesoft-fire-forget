@@ -36,7 +36,7 @@ app.post('/publish', function (req, res) {
   console.log(req.body);
 	open
 		.then(function (conn) {
-			var ok = conn.createChannel();
+			var ok = conn.createChannel(); 
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
 				ch.sendToQueue(q, new Buffer(JSON.stringify(req.body)));
