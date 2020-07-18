@@ -2,7 +2,7 @@ $(document).ready(function () {
   
   $.ajax({
 		type: 'POST',
-		data: JSON.stringify(data),
+		data: JSON.stringify("Data Entered!!"),
 		contentType: 'application/json',
 		url: '/publish',
 		success: function (data) {
