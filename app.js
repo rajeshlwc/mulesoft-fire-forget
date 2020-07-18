@@ -21,6 +21,7 @@ function listenForMessages() {
 				ch.assertQueue(q);
 				ch.consume(q, function (msg) {
 					if (msg !== null) {
+            console.log('Received Message!!');
 						console.log(msg.content.toString());
 						ch.ack(msg);
             //res.send(msg.content.toString());
@@ -42,6 +43,7 @@ app.post('/publish', function (req, res) {
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
         ch.sendToQueue(q, new Buffer(JSON.stringify(req.body)));
+        console.log('Message Sent!!');
         //ch.close(function() {conn.close()})
         res.send({success: true, sent: req.body});
 			});
