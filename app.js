@@ -7,6 +7,7 @@ var q = 'tasks';
 var url = process.env.CLOUDAMQP_URL || "amqp://localhost";
 var open = require('amqplib').connect(url);
 
+app.get('/consume', function(req, res) {
 // Consumer
 open.then(function(conn) {
   var ok = conn.createChannel();
@@ -21,7 +22,10 @@ open.then(function(conn) {
   });
   return ok;
 }).then(null, console.warn);
+});
 
+
+app.get('/', function(req, res) {
 // Publisher
 open.then(function(conn) {
   var ok = conn.createChannel();
@@ -31,9 +35,7 @@ open.then(function(conn) {
   });
   return ok;
 }).then(null, console.warn);
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.listen(port, () => console.log(`listening on port ${port}!`));
