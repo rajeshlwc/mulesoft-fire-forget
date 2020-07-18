@@ -14,7 +14,7 @@ $(document).ready(function () {
   $("#send").on("click", function() {
 		var data = {};
 		data.source = 'Heroku';
-		data.message = $("messagebox").val();
+		data.message = $("#messagebox").val();
 
 		$.ajax({
 			type: 'POST',
