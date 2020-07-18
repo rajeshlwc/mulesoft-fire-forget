@@ -10,9 +10,20 @@ $(document).ready(function () {
 
         var receivedMessages = JSON.parse(data);
 
-        $.each(receivedMessages, function(result){
-          console.log(result);
-        })
+        var appendHTML = `<tr class="slds-hint-parent">
+        <td role="gridcell">
+          <div class="slds-truncate" title="Company One">
+            ${receivedMessages.message}
+          </div>
+        </td>
+        <td role="gridcell">
+          <div class="slds-truncate" title="Director of Operations">
+          ${receivedMessages.source}
+          </div>
+        </td>
+      </tr>`;
+        
+      $("#tablebody").prepend(appendHTML);
 
 			},
 		});
