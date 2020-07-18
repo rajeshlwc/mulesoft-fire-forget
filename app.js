@@ -6,7 +6,10 @@ const port = process.env.PORT || 3000;
 var q = 'tasks';
 var url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 var open = require('amqplib').connect(url);
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 // Serve static files
 app.use(express.static(__dirname + '/public'));
 
@@ -21,7 +24,7 @@ app.get('/consume', function (req, res) {
 						console.log(msg.content.toString());
 						ch.ack(msg);
 						res.send(msg.content.toString());
-					}
+          }
 				});
 			});
 			return ok;
@@ -35,9 +38,9 @@ app.post('/publish', function (req, res) {
 			var ok = conn.createChannel();
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
-				ch.sendToQueue(q, new Buffer(req.body));
+				ch.sendToQueue(q, new Buffer(req.body.message));
 			});
-			res.send(req.body);
+			res.send(req.body.message);
 		})
 		.then(null, console.warn);
 });
