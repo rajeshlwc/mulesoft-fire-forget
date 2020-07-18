@@ -40,7 +40,7 @@ app.post('/publish', function (req, res) {
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
         ch.sendToQueue(q, new Buffer(JSON.stringify(req.body)));
-        ch.close(function() {conn.close()})
+        //ch.close(function() {conn.close()})
         //res.send({success: true, sent: req.body});
 			});
 		})
