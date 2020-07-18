@@ -41,7 +41,7 @@ app.post('/publish', function (req, res) {
 				ch.assertQueue(q);
         ch.sendToQueue(q, new Buffer(JSON.stringify(req.body)));
         //ch.close(function() {conn.close()})
-        //res.send({success: true, sent: req.body});
+        res.send({success: true, sent: req.body});
 			});
 		})
 		.then(null, console.warn);
