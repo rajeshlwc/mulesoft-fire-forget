@@ -1,122 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/assets/styles/salesforce-lightning-design-system.css"
+		/>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="slds-grid slds-wrap">
-      <nav class="slds-col slds-size_1-of-1">
-        <div class="slds-page-header">
-          <div class="slds-page-header__row">
-          <div class="slds-page-header__col-title">
-          <div class="slds-media">
-          <div class="slds-media__figure">
-          <span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
-          <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
-          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
-          </svg>
-          <span class="slds-assistive-text">Heroku Message Channel</span>
-          </span>
-          </div>
-          <div class="slds-media__body">
-          <div class="slds-page-header__name">
-          <div class="slds-page-header__name-title">
-          <h1>
-          <span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">Heroku Messaging Channel</span>
-          </h1>
-          </div>
-          </div>
-          <p class="slds-page-header__name-meta">Developer - Leela Mohan</p>
-          </div>
-          </div>
-          </div>
-          </div>
-          </div>
-      </nav>
-      <main class="slds-col slds-size_1-of-1">
-        <article class="slds-card">
-        <div class="slds-form-element" style="padding:200px;">
-          <label class="slds-form-element__label" for="form-element-01">Send Message to Message Queue</label>
-          <div class="slds-form-element__control">
-          <input type="text" id="form-element-01" placeholder="Enter message to send" class="slds-input" />
-          </div>
-          </div>
-        </article>
-      </main>
-    
-      <nav class="slds-col slds-size_1-of-1">
-        <article class="slds-card">
-          <div class="slds-card__header slds-grid">
-          <header class="slds-media slds-media_center slds-has-flexi-truncate">
-          <div class="slds-media__figure">
-          <span class="slds-icon_container slds-icon-standard-contact" title="contact">
-          <svg class="slds-icon slds-icon_small" aria-hidden="true">
-          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
-          </svg>
-          <span class="slds-assistive-text">contact</span>
-          </span>
-          </div>
-          <div class="slds-media__body">
-          <h2 class="slds-card__header-title">
-          <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Contacts (1)">
-          <span>Contacts (1)</span>
-          </a>
-          </h2>
-          </div>
-          <div class="slds-no-flex">
-          <button class="slds-button slds-button_neutral">New</button>
-          </div>
-          </header>
-          </div>
-          <div class="slds-card__body">
-          <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
-          <thead>
-          <tr class="slds-line-height_reset">
-          <th class="" scope="col">
-          <div class="slds-truncate" title="Name">Name</div>
-          </th>
-          <th class="" scope="col">
-          <div class="slds-truncate" title="Company">Company</div>
-          </th>
-          <th class="" scope="col">
-          <div class="slds-truncate" title="Title">Title</div>
-          </th>
-          <th class="" scope="col">
-          <div class="slds-truncate" title="Email">Email</div>
-          </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="slds-hint-parent">
-          <th scope="row">
-          <div class="slds-truncate" title="Amy Choi">
-          <a href="javascript:void(0);" tabindex="-1">Amy Choi</a>
-          </div>
-          </th>
-          <td role="gridcell">
-          <div class="slds-truncate" title="Company One">Company One</div>
-          </td>
-          <td role="gridcell">
-          <div class="slds-truncate" title="Director of Operations">Director of Operations</div>
-          </td>
-          <td role="gridcell">
-          <div class="slds-truncate" title="adam@company.com">adam@company.com</div>
-          </td>
-          </tr>
-          </tbody>
-          </table>
-          </div>
-          <footer class="slds-card__footer">
-          <a class="slds-card__footer-action" href="javascript:void(0);">View All
-          <span class="slds-assistive-text">Contacts</span>
-          </a>
-          </footer>
-          </article>
-      </nav>
+		<title>MQ</title>
+	</head>
+	<body>
+		<div class="slds-grid slds-wrap">
+			<nav class="slds-col slds-size_1-of-1">
+				<div class="slds-page-header">
+					<div class="slds-page-header__row">
+						<div class="slds-page-header__col-title">
+							<div class="slds-media">
+								<div class="slds-media__figure">
+									<span
+										class="slds-icon_container slds-icon-standard-opportunity"
+										title="opportunity"
+									>
+										<svg
+											class="slds-icon slds-page-header__icon"
+											aria-hidden="true"
+										>
+											<use
+												xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+											></use>
+										</svg>
+										<span class="slds-assistive-text"
+											>Heroku Message Channel</span
+										>
+									</span>
+								</div>
+								<div class="slds-media__body">
+									<div class="slds-page-header__name">
+										<div class="slds-page-header__name-title">
+											<h1>
+												<span
+													class="slds-page-header__title slds-truncate"
+													title="Rohde Corp - 80,000 Widgets"
+													>Heroku Messaging Channel</span
+												>
+											</h1>
+										</div>
+									</div>
+									<p class="slds-page-header__name-meta">
+										Developer - Leela Mohan
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<main class="slds-col slds-size_1-of-1">
+				<article class="slds-card">
+					<div class="slds-form-element" style="padding: 200px;">
+						<label class="slds-form-element__label" for="form-element-01"
+							>Send Message to Message Queue</label
+						>
+						<div class="slds-form-element__control">
+							<input
+								type="text"
+								id="form-element-01"
+								placeholder="Enter message to send"
+								class="slds-input"
+							/>
+							<div style="padding: 10px; text-align: center;">
+								<button
+									class="slds-button slds-button_brand"
+									style="width: 200px;"
+								>
+									Send
+								</button>
+							</div>
+						</div>
+					</div>
+				</article>
+			</main>
+
+			<nav class="slds-col slds-size_1-of-1">
+				<article class="slds-card">
+					<div class="slds-card__header slds-grid">
+						<header
+							class="slds-media slds-media_center slds-has-flexi-truncate"
+						>
+							<div class="slds-media__figure">
+								<span
+									class="slds-icon_container slds-icon-standard-contact"
+									title="contact"
+								>
+									<svg class="slds-icon slds-icon_small" aria-hidden="true">
+										<use
+											xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"
+										></use>
+									</svg>
+									<span class="slds-assistive-text">contact</span>
+								</span>
+							</div>
+							<div class="slds-media__body">
+								<h2 class="slds-card__header-title">
+									<a
+										href="javascript:void(0);"
+										class="slds-card__header-link slds-truncate"
+										title="Contacts (1)"
+									>
+										<span>Messages Received</span>
+									</a>
+								</h2>
+							</div>
+							<div class="slds-no-flex"></div>
+						</header>
+					</div>
+					<div class="slds-card__body">
+						<table
+							class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout"
+							role="grid"
+						>
+							<thead>
+								<tr class="slds-line-height_reset">
+									<th class="" scope="col">
+										<div class="slds-truncate" title="Company">Message</div>
+									</th>
+									<th class="" scope="col">
+										<div class="slds-truncate" title="Title">Source</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="slds-hint-parent">
+									<td role="gridcell">
+										<div class="slds-truncate" title="Company One">
+											Sample Message
+										</div>
+									</td>
+									<td role="gridcell">
+										<div class="slds-truncate" title="Director of Operations">
+											Mulesoft
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<footer class="slds-card__footer">
+						<a class="slds-card__footer-action" href="javascript:void(0);"
+							>View All
+							<span class="slds-assistive-text">Contacts</span>
+						</a>
+					</footer>
+				</article>
+			</nav>
     </div>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/assets/scripts/index.js" ></script>
+	</body>
+</html>

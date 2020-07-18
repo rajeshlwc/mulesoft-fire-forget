@@ -29,7 +29,7 @@ app.get('/consume', function (req, res) {
 		.then(null, console.warn);
 });
 
-app.get('/publish', function (req, res) {
+app.post('/publish', function (req, res) {
 	open
 		.then(function (conn) {
 			var ok = conn.createChannel();
@@ -37,7 +37,7 @@ app.get('/publish', function (req, res) {
 				ch.assertQueue(q);
 				ch.sendToQueue(q, new Buffer('Request 1 by Leela Mohan'));
 			});
-			return ok;
+			res.send(req.body);
 		})
 		.then(null, console.warn);
 });
