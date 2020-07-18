@@ -35,7 +35,7 @@ app.post('/publish', function (req, res) {
 			var ok = conn.createChannel();
 			ok = ok.then(function (ch) {
 				ch.assertQueue(q);
-				ch.sendToQueue(q, new Buffer('Request 1 by Leela Mohan'));
+				ch.sendToQueue(q, new Buffer(req.body));
 			});
 			res.send(req.body);
 		})
