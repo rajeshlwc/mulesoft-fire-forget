@@ -12,11 +12,11 @@ $(document).ready(function () {
         }
       }`,
 			}),
-			success: function (data) {
-				console.log(data);
+			success: function (result) {
+				console.log(result);
 				var appendHTML = '';
 
-				$.each(data.messages, function (row) {
+				$.each(result.data.messages, function (row) {
 					appendHTML +
 						`<tr class="slds-hint-parent">
         <td role="gridcell">
