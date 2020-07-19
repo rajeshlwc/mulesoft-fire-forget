@@ -65,7 +65,7 @@ return pool.connect()
       .then((client) => {
         client.query(insertMsg).then((res) => {
           client.release();
-					return 'Data Inserted';
+			
 				});
       });
 };
