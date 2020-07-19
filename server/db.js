@@ -52,13 +52,12 @@ const fetchMessages = () => {
 
 const insertMessage = (message, source) => {
 
-  const insertMessage = `
-  Insert into rabbit_queue values ({$message}, {$source})
-`;
+  console.log(message);
+  const insertMsg = `Insert into rabbit_queue values ({$message}, {$source})`;
 
 return pool.connect()
       .then((client) => {
-        client.query(insertMessage).then((res) => {
+        client.query(insertMsg).then((res) => {
 					return 'Data Inserted';
 				});
       });
