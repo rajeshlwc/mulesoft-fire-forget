@@ -41,6 +41,7 @@ $(document).ready(function () {
 			url: '/publish',
 			success: function (data) {
         console.log('success');
+        $("#messagebox").val('');
         //getQueue();
 			},
 		});
