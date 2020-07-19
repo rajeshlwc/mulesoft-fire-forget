@@ -1,50 +1,46 @@
 $(document).ready(function () {
-
-  function loadMessages(){
-
-    $.ajax({
+	function loadMessages() {
+		$.ajax({
 			type: 'POST',
 			contentType: 'application/json',
-      url: 'https://rabbitmq-mule.herokuapp.com/graphQL',
-      data: JSON.stringify({ query: `{
+			url: 'https://rabbitmq-mule.herokuapp.com/graphQL',
+			data: JSON.stringify({
+				query: `{
         messages{
           message,
           source
         }
-      }`
-     }),
+      }`,
+			}),
 			success: function (data) {
-        console.log(data);
+				console.log(data);
+				var appendHTML = '';
 
-        var receivedMessages = JSON.parse(data);
-
-        var appendHTML = `<tr class="slds-hint-parent">
+				$.each(data.messages, function (row) {
+					appendHTML +
+						`<tr class="slds-hint-parent">
         <td role="gridcell">
           <div class="slds-truncate" title="Company One">
-            ${receivedMessages.message}
+            ${row.message}
           </div>
         </td>
         <td role="gridcell">
           <div class="slds-truncate" title="Director of Operations">
-          ${receivedMessages.source}
+          ${row.source}
           </div>
         </td>
       </tr>`;
-        
-      $("#tablebody").prepend(appendHTML);
+				});
 
+				$('#tablebody').prepend(appendHTML);
 			},
 		});
-  }
+	}
 
-  function getQueue(){
-    
-  }
-  
-  $("#send").on("click", function() {
+	$('#send').on('click', function () {
 		var data = {};
 		data.source = 'Heroku';
-		data.message = $("#messagebox").val();
+		data.message = $('#messagebox').val();
 
 		$.ajax({
 			type: 'POST',
@@ -52,12 +48,12 @@ $(document).ready(function () {
 			contentType: 'application/json',
 			url: '/publish',
 			success: function (data) {
-        console.log('success');
-        $("#messagebox").val('');
-        //getQueue();
+				console.log('success');
+				$('#messagebox').val('');
+				//getQueue();
 			},
 		});
-  });
-  
-  loadMessages();
+	});
+
+	loadMessages();
 });
