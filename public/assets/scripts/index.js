@@ -17,7 +17,8 @@ $(document).ready(function () {
 				var appendHTML = '';
 
 				$.each(result.data.messages, function (i, row) {
-					appendHTML +
+					appendHTML =
+						appendHTML +
 						`<tr class="slds-hint-parent">
         <td role="gridcell">
           <div class="slds-truncate" title="Company One">
