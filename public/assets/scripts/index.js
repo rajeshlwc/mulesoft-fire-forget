@@ -1,10 +1,18 @@
 $(document).ready(function () {
 
-  function getQueue(){
+  function loadMessages(){
+
     $.ajax({
-			type: 'GET',
+			type: 'POST',
 			contentType: 'application/json',
-			url: '/consume',
+      url: 'https://rabbitmq-mule.herokuapp.com/graphQL',
+      data: JSON.stringify({ query: `{
+        messages{
+          message,
+          source
+        }
+      }`
+     }),
 			success: function (data) {
         console.log(data);
 
@@ -28,6 +36,10 @@ $(document).ready(function () {
 			},
 		});
   }
+
+  function getQueue(){
+    
+  }
   
   $("#send").on("click", function() {
 		var data = {};
@@ -45,5 +57,7 @@ $(document).ready(function () {
         //getQueue();
 			},
 		});
-	});
+  });
+  
+  loadMessages();
 });
