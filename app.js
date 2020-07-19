@@ -33,9 +33,9 @@ function listenForMessages() {
             console.log('Received Message!!');
 						console.log(msg.content.toString());
 						ch.ack(msg);
-						console.log(insertMessage(msg.content.toString()).then(function(data){
-							return data;
-						}));
+						insertMessage(msg.content.toString()).then(function(data){
+							console.log(data);
+						});
           }
 				});
 			});
