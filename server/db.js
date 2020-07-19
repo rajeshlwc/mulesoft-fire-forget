@@ -50,10 +50,13 @@ const fetchMessages = () => {
       });
 };
 
-const insertMessage = (message, source) => {
+const insertMessage = (message) => {
 
   console.log(message);
-  const insertMsg = `Insert into rabbit_queue values ({$message}, {$source})`;
+
+  var msg = JSON.parse(message);
+
+  const insertMsg = `Insert into rabbit_queue values ({$msg.message}, {$msg.source})`;
 
 return pool.connect()
       .then((client) => {

@@ -33,7 +33,7 @@ function listenForMessages() {
             console.log('Received Message!!');
 						console.log(msg.content.toString());
 						ch.ack(msg);
-						console.log(insertMessage(msg.content.message, msg.content.source));
+						console.log(insertMessage(msg.content.toString()));
           }
 				});
 			});
