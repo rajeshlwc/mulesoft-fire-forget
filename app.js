@@ -2,16 +2,25 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
+const graphqlHTTP = require('express-graphql').graphqlHTTP;
+const q = 'tasks';
+const url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
+const open = require('amqplib').connect(url);
+const bodyParser = require('body-parser');
+const { schema, rootValue } = require('./server/schema');
+const { insertMessage } = require('./server/db'); 
 
-var q = 'tasks';
-var url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
-var open = require('amqplib').connect(url);
-var bodyParser = require('body-parser');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-// Serve static files
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));// Serve static files
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,  // Must be provided
+  rootValue: rootValue,
+  graphiql: true,  // Enable GraphiQL when server endpoint is accessed in browser
+}));
+
 
 function listenForMessages() {
 	open
@@ -24,7 +33,7 @@ function listenForMessages() {
             console.log('Received Message!!');
 						console.log(msg.content.toString());
 						ch.ack(msg);
-            //res.send(msg.content.toString());
+						insertMessage(msg.content.message, msg.content.source)
           }
 				});
 			});
@@ -32,8 +41,6 @@ function listenForMessages() {
 		})
 		.then(null, console.warn);
   }
-
-  
 
 app.post('/publish', function (req, res) {
   console.log(req.body);
@@ -44,7 +51,6 @@ app.post('/publish', function (req, res) {
 				ch.assertQueue(q);
         ch.sendToQueue(q, new Buffer(JSON.stringify(req.body)));
         console.log('Message Sent!!');
-        //ch.close(function() {conn.close()})
         res.send({success: true, sent: req.body});
 			});
 		})
