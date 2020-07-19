@@ -56,6 +56,9 @@ const insertMessage = (message) => {
 
   var msg = JSON.parse(message);
 
+  console.log(msg.source);
+  console.log(msg.message);
+
   const insertMsg = `Insert into rabbit_queue values ({$msg.message}, {$msg.source})`;
 
 return pool.connect()
