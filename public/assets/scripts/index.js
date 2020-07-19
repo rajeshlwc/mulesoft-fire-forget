@@ -16,7 +16,7 @@ $(document).ready(function () {
 				console.log(result);
 				var appendHTML = '';
 
-				$.each(result.data.messages, function (row) {
+				$.each(result.data.messages, function (i, row) {
 					appendHTML +
 						`<tr class="slds-hint-parent">
         <td role="gridcell">
