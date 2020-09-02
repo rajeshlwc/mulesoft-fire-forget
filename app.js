@@ -33,7 +33,7 @@ function listenForMessages() {
             console.log('Received Message!!');
 						console.log(msg.content.toString());
 						ch.ack(msg);
-						insertMessage(msg.content).then(function(){
+						insertMessage(JSON.stringify(msg.content)).then(function(){
 							console.log('Insert Success');
 						});
           }
