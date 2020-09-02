@@ -31,9 +31,9 @@ function listenForMessages() {
 				ch.consume(q, function (msg) {
 					if (msg !== null) {
             console.log('Received Message!!');
-						console.log(msg.content);
+						console.log(msg.content.toString());
 						ch.ack(msg);
-						insertMessage(JSON.stringify( msg.content.toString()).then(function(){
+						insertMessage(msg.content.toString()).then(function(){
 							console.log('Insert Success');
 						});
           }
