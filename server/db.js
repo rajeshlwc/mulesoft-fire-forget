@@ -59,7 +59,7 @@ const insertMessage = (message) => {
   console.log(msg.source);
   console.log(msg.message);
 
-  const insertMsg = `Insert into rabbit_queue values ('${msg.message.toString()}', '${msg.source}')`;
+  const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
