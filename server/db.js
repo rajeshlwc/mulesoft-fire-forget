@@ -70,9 +70,9 @@ const insertMessage = (message) => {
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
-  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status, source) 
+  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status,billingAddress,shippingAddress, source) 
                       values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}'
-                      ,'${qty}','${msg.message.Status}',  '${msg.source}')`;
+                      ,'${qty}','${msg.message.Status}','${businessAddress}','${shippingAddress}' , '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
