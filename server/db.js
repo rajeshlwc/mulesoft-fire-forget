@@ -28,6 +28,8 @@ const parseMessages = (res) => {
           createddate: row.createddate,
           owner:row.orderowner,
           quantity:row.quantity,
+          billingaddress: row.billingaddress,
+          shippingaddress: row.shippingaddress,
           status: row.status
       };
   });
@@ -35,7 +37,7 @@ const parseMessages = (res) => {
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT orderid, productname, source,price,quantity,status,createddate,orderowner
+      SELECT orderid, productname, source,price,quantity,status,createddate,orderowner, shippingaddress, billingaddress
       FROM orders
   `;
   
