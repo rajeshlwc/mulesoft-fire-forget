@@ -3,7 +3,7 @@ const assert = require('assert');
 
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgres://obzffxmxtmqays:4f61631aba26df3eab668b9fc0af82eba9dbd692623b966fc3a36943af4c4a5d@ec2-54-234-28-165.compute-1.amazonaws.com:5432/d9jdhmiae2ofcb',
+    connectionString: process.env.DATABASE_URL || 'postgres://crdrelxzevyyqa:191ad04487de0a0cf97820c20776ffdfe56ec4338f66b304795f23c20210d687@ec2-54-146-91-153.compute-1.amazonaws.com:5432/d46r2lvaeqi3ku',
     ssl: {
       rejectUnauthorized: false,
     }
@@ -20,7 +20,7 @@ const parseMessages = (res) => {
  assert(res);
   return res.rows.map((row) => {
       return {
-          message: row.message,
+          message: row.ProductName,
           source: row.source
       };
   });
@@ -28,8 +28,8 @@ const parseMessages = (res) => {
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT message, source
-      FROM rabbit_queue
+      SELECT orderId, ProductName, source
+      FROM orders
   `;
   
   // Prevent SQL injection using parametrized queries
@@ -59,7 +59,9 @@ const insertMessage = (message) => {
   console.log(msg.source);
   console.log(msg.message);
 
-  const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
+  //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
+
+  const insertMsg = `Insert into orders (orderId, ProductName, source) values ('${msg.message.orderId}','${msg.product}',  '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
@@ -69,6 +71,11 @@ return pool.connect()
 				});
       });
 };
+
+
+const createTable = ()=>{
+
+}
 
 module.exports = {
   fetchMessages,
