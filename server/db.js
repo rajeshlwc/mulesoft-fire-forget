@@ -65,10 +65,14 @@ const insertMessage = (message) => {
 
 
   var qty = parseInt(msg.message.Quantity) || 0;
+  var businessAddress = msg.message.BillingAddress || '';
+  var shippingAddress = msg.message.shippingAddress || '';
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
-  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status, source) values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}','${qty}','${msg.message.Status}',  '${msg.source}')`;
+  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status, source) 
+                      values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}'
+                      ,'${qty}','${msg.message.Status}',  '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
