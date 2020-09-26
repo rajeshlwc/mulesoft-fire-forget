@@ -25,6 +25,9 @@ const parseMessages = (res) => {
           orderid: row.orderid,
           productname: row.productname,
           price:row.price,
+          createddate: row.createddate,
+          owner:row.orderowner,
+          quantity:row.quantity,
           status: row.status
       };
   });
@@ -32,7 +35,7 @@ const parseMessages = (res) => {
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT orderid, productname, source,price,quantity,status
+      SELECT orderid, productname, source,price,quantity,status,createddate,orderowner
       FROM orders
   `;
   
@@ -65,14 +68,16 @@ const insertMessage = (message) => {
 
 
   var qty = parseInt(msg.message.Quantity) || 0;
-  var businessAddress = msg.message.BillingAddress || '';
-  var shippingAddress = msg.message.shippingAddress || '';
+  var businessAddress = msg.message.BillingAddress || ' ';
+  var shippingAddress = msg.message.shippingAddress || ' ';
+  var createdDate =  msg.message.createdDate || ' ';
+  var owner =  msg.message.Owner || ' ';
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
-  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status,billingAddress,shippingAddress, source) 
+  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status,billingAddress,shippingAddress,createddate,orderowner,  source) 
                       values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}'
-                      ,'${qty}','${msg.message.Status}','${businessAddress}','${shippingAddress}' , '${msg.source}')`;
+                      ,'${qty}','${msg.message.Status}','${businessAddress}','${shippingAddress}' ,'${createdDate}' ,'${owner}' , '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
