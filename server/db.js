@@ -61,7 +61,7 @@ const insertMessage = (message) => {
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
-  const insertMsg = `Insert into orders (orderId, ProductName, source) values ('${msg.message.orderId}','${msg.product}',  '${msg.source}')`;
+  const insertMsg = `Insert into orders (orderId, ProductName, source) values ('${msg.message.orderId}','${msg.message.product}',  '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
