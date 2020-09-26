@@ -68,10 +68,10 @@ const insertMessage = (message) => {
 
 
   var qty = parseInt(msg.message.Quantity) || 0;
-  var businessAddress = msg.message.BillingAddress || ' ';
-  var shippingAddress = msg.message.shippingAddress || ' ';
-  var createdDate =  msg.message.createdDate || ' ';
-  var owner =  msg.message.Owner || ' ';
+  var businessAddress = msg.message.BillingAddress || 'NA';
+  var shippingAddress = msg.message.shippingAddress || 'NA';
+  var createdDate =  msg.message.createdDate || 'NA';
+  var owner =  msg.message.Owner || 'NA';
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
