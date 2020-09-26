@@ -20,15 +20,19 @@ const parseMessages = (res) => {
  assert(res);
   return res.rows.map((row) => {
       return {
-          message: row.ProductName,
-          source: row.source
+          message: row.productName,
+          source: row.source,
+          orderid: row.orderId,
+          productname: row.productName,
+          price:row.price,
+          status: row.status
       };
   });
 };
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT orderId, ProductName, source
+      SELECT orderId, productName, source,price,quantity,status
       FROM orders
   `;
   
@@ -61,7 +65,7 @@ const insertMessage = (message) => {
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
-  const insertMsg = `Insert into orders (orderId, ProductName, source) values ('${msg.message.orderId}','${msg.message.product}',  '${msg.source}')`;
+  const insertMsg = `Insert into orders (orderId, productName, price,quantity, status, source) values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}','${msg.message.Quantity}','${msg.message.Status}',  '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
