@@ -20,10 +20,10 @@ const parseMessages = (res) => {
  assert(res);
   return res.rows.map((row) => {
       return {
-          message: row.productName,
+          message: row.productname,
           source: row.source,
-          orderid: row.orderId,
-          productname: row.productName,
+          orderid: row.orderid,
+          productname: row.productname,
           price:row.price,
           status: row.status
       };
@@ -32,7 +32,7 @@ const parseMessages = (res) => {
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT orderId, productName, source,price,quantity,status
+      SELECT orderid, productname, source,price,quantity,status
       FROM orders
   `;
   
@@ -63,7 +63,8 @@ const insertMessage = (message) => {
   console.log(msg.source);
   console.log(msg.message);
 
-  var qty = parseInt(msg.message.Quantity);
+
+  var qty = parseInt(msg.message.Quantity) || 0;
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
