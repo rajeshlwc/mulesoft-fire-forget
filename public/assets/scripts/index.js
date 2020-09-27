@@ -6,11 +6,20 @@ $(document).ready(function () {
 			url: 'https://rabbitmq-mule.herokuapp.com/graphQL',
 			data: JSON.stringify({
 				query: `{
-        messages{
+         messages{
           message,
-          source
-        }
-      }`,
+					source,
+					orderid,
+					productname,
+					price,
+					createddate,
+					owner,
+					quantity,
+					billingaddress,
+					shippingaddress,
+					status
+         }
+        }`,
 			}),
 			success: function (result) {
 				console.log(result);
@@ -20,20 +29,64 @@ $(document).ready(function () {
 					appendHTML =
 						appendHTML +
 						`<tr class="slds-hint-parent">
-        <td role="gridcell">
-          <div class="slds-truncate" title="Company One">
-            ${row.message}
-          </div>
-        </td>
-        <td role="gridcell">
-          <div class="slds-truncate" title="Director of Operations">
-          ${row.source}
-          </div>
-        </td>
-      </tr>`;
-				});
+                <td role="gridcell">
+                  <div class="slds-truncate" title="Company One">
+                    ${row.message}
+                  </div>
+                </td>
+                <td role="gridcell">
+                  <div class="slds-truncate" title="Director of Operations">
+                    ${row.source}
+                  </div>
+                </td>
+							</tr>`;
+							
 
+							appendHTML1 = `	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${row.orderid}</span></h1>
+							<div style="margin-top:10px">Item 1</div>
+							<ul class="slds-page-header__detail-list">
+								<li class="slds-page-header__detail-item">
+									<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
+									<div title="Burlington Textile Weaving Plant Generator">
+										<a href="javascript:void(0);">  ${row.productname}</a>
+									</div>
+								</li>
+								<li class="slds-page-header__detail-item">
+									<div class="slds-text-title slds-truncate" title="Address (2)"> Shipping Address
+									
+									</div>
+									<div title="Multiple Values">
+									${row.shippingaddress}
+									</div>
+								</li>
+								<li class="slds-page-header__detail-item">
+									<div class="slds-text-title slds-truncate" title="Close Date">Order Start Date</div>
+									<div title="11/1/2018"> ${row.createddate}</div>
+								</li>
+								<li class="slds-page-header__detail-item">
+									<div class="slds-text-title slds-truncate" title="Opportunity Owner">Owner</div>
+									<div title="Hyperlink">
+										<div class="slds-media slds-media_small">
+											<div class="slds-media__figure">
+												<span class="slds-avatar slds-avatar_circle slds-avatar_x-small">
+													<img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar" />
+												</span>
+											</div>
+											<div class="slds-media__body">
+												<a href="javascript:void(0);">${row.owner}</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="slds-page-header__detail-item">
+									<div class="slds-text-title slds-truncate" title="Amount">Price</div>
+									<div title="$375,000.00">${row.price}</div>
+								</li>
+							</ul>
+						`
+				});
 				$('#tablebody').prepend(appendHTML);
+				$('#ordercontainer').prepend(appendHTML1);
 			},
 		});
 	}
