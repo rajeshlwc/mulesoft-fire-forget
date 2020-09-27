@@ -6,6 +6,15 @@ const schema = buildSchema(`
       message: String!
       source: String!
       orderid: String!
+      productname: String!
+      price: String!
+      createddate: String!
+      owner: String!
+      quantity: String!
+      billingaddress: String!
+      shippingaddress: String!
+      status: String!
+
       
   }
 
