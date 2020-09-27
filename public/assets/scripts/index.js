@@ -25,6 +25,14 @@ $(document).ready(function () {
 				console.log(result);
 				var appendHTML = '';
 				var appendHTML1 = '';
+
+				let orders = result.data.messages.reduce((r, a) => {
+					r[a.orderid] = [...r[a.orderid] || [], a];
+					return r;
+				 }, {});
+
+				 console.log(orders);
+
 				$.each(result.data.messages, function (i, row) {
 					appendHTML =
 						appendHTML +
@@ -85,7 +93,7 @@ $(document).ready(function () {
 							</ul>
 						`
 				});
-				$('#tablebody').prepend(appendHTML);
+			//	$('#tablebody').prepend(appendHTML);
 				$('#ordercontainer').prepend(appendHTML1);
 			},
 		});
