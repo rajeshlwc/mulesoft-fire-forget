@@ -37,7 +37,7 @@ $(document).ready(function () {
 					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
 					$.each(orders[k], function (i, row) {
-						appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i}</div>
+						appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
