@@ -76,7 +76,16 @@ $(document).ready(function () {
 								<div class="slds-text-title slds-truncate" title="Amount">Price</div>
 								<div title="$375,000.00">${row.price}</div>
 							</li>
+							<li class="slds-page-header__detail-item">
+							<div class="slds-text-title slds-truncate" > Quantity
+							
+							</div>
+							<div title="Multiple Values">
+							${row.quantity}
+							</div>
+						</li>
 						</ul>
+						<hr/>
 					`
 
 					});
