@@ -42,7 +42,7 @@ $(document).ready(function () {
 							</tr>`;
 							
 
-							appendHTML1 = `	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${row.orderid}</span></h1>
+							appendHTML1 += `	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${row.orderid}</span></h1>
 							<div style="margin-top:10px">Item 1</div>
 							<ul class="slds-page-header__detail-list">
 								<li class="slds-page-header__detail-item">
