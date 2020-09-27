@@ -34,7 +34,7 @@ $(document).ready(function () {
 				 console.log(orders);
 
 				 for(var i = 0; i < orders.length; i++) {
-					console.log(order[i]);
+					console.log(orders[i]);
 			}
 
 				$.each(result.data.messages, function (i, row) {
