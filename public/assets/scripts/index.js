@@ -33,6 +33,10 @@ $(document).ready(function () {
 
 				 console.log(orders);
 
+				 for(var i = 0; i < orders.length; i++) {
+					console.log(order[i]);
+			}
+
 				$.each(result.data.messages, function (i, row) {
 					appendHTML =
 						appendHTML +
