@@ -110,8 +110,8 @@ const createTable = ()=>{
 const checkTableExists = `SELECT
 *
 FROM
-pg_catalog.pg_tables where tablename = 'Orders'`;
-
+pg_catalog.pg_tables where tablename = 'orders'`;
+console.log('Entered');
 pool.connect()
       .then((client) => {
         client.query(checkTableExists).then((res) => {
