@@ -118,7 +118,7 @@ pool.connect()
           if (res.rows.length == 0) {
             pool.query(query).then((res) => {
               console.log("Table is successfully created");
-              client.release();
+             
             });
           }
 				}).catch((err) => {
@@ -126,6 +126,7 @@ pool.connect()
         })
         .finally(() => {
           //pool.end();
+          client.release();
         });;
       });
 
