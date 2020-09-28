@@ -93,9 +93,46 @@ return pool.connect()
 
 const createTable = ()=>{
 
+ const query = `CREATE TABLE Orders (
+    orderid varchar,
+    Productname varchar,
+    description varchar,
+    shippingaddress varchar,
+    billingaddress varchar,
+    orderowner varchar,
+    price varchar,
+    createddate varchar,
+    status varchar,
+    quantity int,
+    source varchar
+)`;
+
+const checkTableExists = `SELECT
+*
+FROM
+pg_catalog.pg_tables where tablename = 'Orders'`;
+
+pool.connect()
+      .then((client) => {
+        client.query(checkTableExists).then((res) => {
+          if (res.rows.length == 0) {
+            pool.query(query).then((res) => {
+              console.log("Table is successfully created");
+              client.release();
+            });
+          }
+				}).catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          //pool.end();
+        });;
+      });
+
 }
 
 module.exports = {
   fetchMessages,
-  insertMessage
+  insertMessage,
+  createTable
 };

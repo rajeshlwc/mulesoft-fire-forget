@@ -8,7 +8,7 @@ const url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 const open = require('amqplib').connect(url);
 const bodyParser = require('body-parser');
 const { schema, rootValue } = require('./server/schema');
-const { insertMessage } = require('./server/db'); 
+const { insertMessage, createTable } = require('./server/db'); 
 
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -21,7 +21,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,  // Enable GraphiQL when server endpoint is accessed in browser
 }));
 
-
+createTable();
 function listenForMessages() {
 	open
 		.then(function (conn) {
@@ -57,6 +57,10 @@ app.post('/publish', function (req, res) {
 			});
 		})
 		.then(null, console.warn);
+});
+app.get("/dataurl", function (req, res) {
+	var test = process.env.DATABASE_URL || "NO URI Found";
+	res.send(test);
 });
 
 app.get('/', function (req, res) {
