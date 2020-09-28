@@ -26,15 +26,15 @@ $(document).ready(function () {
 				var appendHTML = '';
 				var appendHTML1 = '';
 
+			
+
+			if(result.data.messages.length === 0){
+				appendHTML1 = appendHTML1 + 'No order yet!!';
+			}else{
 				let orders = result.data.messages.reduce((r, a) => {
 					r[a.orderid] = [...r[a.orderid] || [], a];
 					return r;
 				 }, {});
-
-			if(orders.length === 0){
-				appendHTML1 = appendHTML1 + 'No order yet!!';
-			}else{
-
 				for (var k in orders){
 
 					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
