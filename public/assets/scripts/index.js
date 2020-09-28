@@ -29,7 +29,7 @@ $(document).ready(function () {
 			
 
 			if(result.data.messages.length === 0){
-				appendHTML1 = appendHTML1 + 'No order yet!!';
+				appendHTML1 = appendHTML1 + '<span style="text-align:center;">No orders yet!!</span>';
 			}else{
 				let orders = result.data.messages.reduce((r, a) => {
 					r[a.orderid] = [...r[a.orderid] || [], a];
