@@ -45,7 +45,7 @@ $(document).ready(function () {
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json',
-			url: 'https://rabbitmq-mule.herokuapp.com/graphQL',
+			url: '/graphQL',
 			data: JSON.stringify({
 				query: `{
          messages{
