@@ -1,48 +1,45 @@
 $(document).ready(function () {
-	$(document).ready(function () {
-		$.ajax("/dataurl", {
-			success: function (data, status, xhr) {
-				// success callback function
-				data = data.replace("postgres://", "");
+	$.ajax("/dataurl", {
+		success: function (data, status, xhr) {
+			// success callback function
+			data = data.replace("postgres://", "");
 
-				var arr = data.split(":");
+			var arr = data.split(":");
 
-				var userName = arr[0];
+			var userName = arr[0];
 
-				var arr1 = arr[1].split("@");
+			var arr1 = arr[1].split("@");
 
-				var password = arr1[0];
-				var host = arr1[1];
+			var password = arr1[0];
+			var host = arr1[1];
 
-				var arr3 = arr[2].split("/");
+			var arr3 = arr[2].split("/");
 
-				var port = arr3[0];
-				var database = arr3[1];
+			var port = arr3[0];
+			var database = arr3[1];
 
-				console.log(userName);
-				console.log(password);
-				console.log(host);
-				console.log(port);
-				console.log(database);
+			console.log(userName);
+			console.log(password);
+			console.log(host);
+			console.log(port);
+			console.log(database);
 
-				const URL =
-					"jdbc:postgresql://" +
-					host +
-					":" +
-					port +
-					"/" +
-					database +
-					"?sslmode=require";
+			const URL =
+				"jdbc:postgresql://" +
+				host +
+				":" +
+				port +
+				"/" +
+				database +
+				"?sslmode=require";
 
-				const driverClassName = "org.postgresql.Driver";
+			const driverClassName = "org.postgresql.Driver";
 
-				$("#url").append(URL);
-				$("#username").append(userName);
-				$("#password").append(password);
-			},
-		});
+			$("#url").append(URL);
+			$("#username").append(userName);
+			$("#password").append(password);
+		},
 	});
-
 
 	function loadMessages() {
 		$.ajax({
@@ -169,6 +166,13 @@ $(document).ready(function () {
 		});
 	}
 
+	$("#close").on("click", function(){
+		$("#modal").css("display","none");
+	});
+	$("#configuration").on("click", function(){
+
+		$("#modal").css("display","block");
+	});
 	$('#send').on('click', function () {
 		var data = {};
 		data.source = 'Heroku';
@@ -189,3 +193,5 @@ $(document).ready(function () {
 
 	loadMessages();
 });
+
+
