@@ -3,7 +3,7 @@ const assert = require('assert');
 
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgres://crdrelxzevyyqa:191ad04487de0a0cf97820c20776ffdfe56ec4338f66b304795f23c20210d687@ec2-54-146-91-153.compute-1.amazonaws.com:5432/d46r2lvaeqi3ku',
+    connectionString: process.env.DATABASE_URL || '',
     ssl: {
       rejectUnauthorized: false,
     }
