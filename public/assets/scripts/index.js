@@ -11,11 +11,13 @@ $(document).ready(function () {
 			var arr1 = arr[1].split("@");
 
 			var password = arr1[0];
-			var host = arr1[1];
+		
 
-			var arr3 = arr[2].split("/");
+			var arr3 = arr[1].split("/");
 
-			var port = arr3[0];
+			var host = arr3[0];
+
+			var port = 5672;
 			var database = arr3[1];
 
 			console.log(userName);
