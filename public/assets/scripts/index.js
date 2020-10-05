@@ -27,13 +27,7 @@ $(document).ready(function () {
 			console.log(database);
 
 			const URL =
-				"jdbc:postgresql://" +
-				host +
-				":" +
-				port +
-				"/" +
-				database +
-				"?sslmode=require";
+			data;
 
 			const driverClassName = "owl.rmq.cloudamqp.com";
 
