@@ -35,7 +35,7 @@ $(document).ready(function () {
 				database +
 				"?sslmode=require";
 
-			const driverClassName = "org.postgresql.Driver";
+			const driverClassName = "owl.rmq.cloudamqp.com";
 
 			$("#url").append(URL);
 			$("#username").append(userName);
