@@ -2,7 +2,7 @@ $(document).ready(function () {
 	$.ajax("/dataurl", {
 		success: function (data, status, xhr) {
 			// success callback function
-			data = data.replace("postgres://", "");
+			data = data.replace("amqp://", "");
 
 			var arr = data.split(":");
 

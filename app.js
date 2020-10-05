@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const graphqlHTTP = require('express-graphql').graphqlHTTP;
-const q = 'orders';
+const q = 'tasks';
 const url = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 const open = require('amqplib').connect(url);
 const bodyParser = require('body-parser');
@@ -59,9 +59,10 @@ app.post('/publish', function (req, res) {
 		.then(null, console.warn);
 });
 app.get("/dataurl", function (req, res) {
-	var test = process.env.DATABASE_URL || "NO URI Found";
+	var test = process.env.CLOUDAMQP_URL || "NO URI Found";
 	res.send(test);
 });
+
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
