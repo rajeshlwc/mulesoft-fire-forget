@@ -102,6 +102,7 @@ function loadClick(){
 
 			let newString= '';
 					$.each(orders[k], function (i, row) {
+						const dt = new Date(row.createddate);
 						appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
@@ -170,7 +171,7 @@ function loadClick(){
 							</li>
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Close Date">Order Start Date</div>
-								<div title="11/1/2018"> ${row.createddate}</div>
+								<div title="11/1/2018"> ${dt}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Opportunity Owner">Owner</div>
