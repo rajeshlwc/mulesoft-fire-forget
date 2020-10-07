@@ -83,7 +83,7 @@ $(document).ready(function () {
     <section class="slds-accordion__section slds-is-open">
       <div class="slds-accordion__summary">
         <h2 class="slds-accordion__summary-heading">
-          <button class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="referenceId-39" aria-expanded="true" title="Accordion summary">
+          <button class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="${k}" aria-expanded="true" title="Accordion summary">
             <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg>
@@ -91,7 +91,7 @@ $(document).ready(function () {
           </button>
         </h2>
       </div>
-      <div class="slds-accordion__content" id="referenceId-39">`;
+      <div class="slds-accordion__content" id="${k}">`;
 
 			let newString= '';
 					$.each(orders[k], function (i, row) {
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
 					});
 
-				appendHTML2 = 	appendHTML2 + newString+`Accordion details - A</div>
+				appendHTML2 = 	appendHTML2 + newString+`</div>
     </section>
   </li>`;
 				}
