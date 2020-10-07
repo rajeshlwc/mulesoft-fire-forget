@@ -83,7 +83,7 @@ function loadClick(){
 				for (var k in orders){
 					
          let startDt = new Date(orders[k][0].createddate).toLocaleDateString()
-					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
+				//	appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
 
 					appendHTML2 =  appendHTML2 +`<li class="slds-accordion__list-item accordian_click">
@@ -104,7 +104,7 @@ function loadClick(){
 			let newString= '';
 					$.each(orders[k], function (i, row) {
 						const dt = new Date(row.createddate);
-						appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i+1}</div>
+					/*	appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
@@ -153,7 +153,7 @@ function loadClick(){
 						</li>
 						</ul>
 						<hr/>
-					`
+					`*/
 					newString = newString +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
