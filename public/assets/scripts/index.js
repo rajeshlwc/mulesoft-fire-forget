@@ -80,7 +80,7 @@ $(document).ready(function () {
 					
 
 					appendHTML2 =  appendHTML2 +`<li class="slds-accordion__list-item">
-    <section class="slds-accordion__section slds-is-open">
+    <section class="slds-accordion__section">
       <div class="slds-accordion__summary">
         <h2 class="slds-accordion__summary-heading">
           <button class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="${k}" aria-expanded="true" title="Accordion summary">
