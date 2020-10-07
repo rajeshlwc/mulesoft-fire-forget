@@ -1,4 +1,11 @@
 $(document).ready(function () {
+function loadClick(){
+	$(".accordian_click").on("click", function(){
+		$('.slds-accordion__section').removeClass('slds-is-open');
+		$(this).find('.slds-accordion__section').addClass('slds-is-open');
+	});
+}
+
 	$.ajax("/dataurl", {
 		success: function (data, status, xhr) {
 			// success callback function
@@ -225,14 +232,12 @@ $(document).ready(function () {
 			//	$('#tablebody').prepend(appendHTML);
 				//$('#ordercontainer').append(appendHTML1);
 				$('#accordian').append(appendHTML2);
+				loadClick();
 			},
 		});
 	}
 
-	$(".accordian_click").on("click", function(){
-		$('.slds-accordion__section').removeClass('slds-is-open');
-		$(this).find('.slds-accordion__section').addClass('slds-is-open');
-	});
+	
 	$("#close").on("click", function(){
 		$("#modal").css("display","none");
 	});
