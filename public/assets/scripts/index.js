@@ -223,7 +223,7 @@ $(document).ready(function () {
 							</tr>`;
 					});
 			//	$('#tablebody').prepend(appendHTML);
-				$('#ordercontainer').append(appendHTML1);
+				//$('#ordercontainer').append(appendHTML1);
 				$('#accordian').append(appendHTML2);
 			},
 		});
