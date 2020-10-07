@@ -79,7 +79,7 @@ $(document).ready(function () {
 					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
 
-					appendHTML2 =  appendHTML2 +`<li class="slds-accordion__list-item">
+					appendHTML2 =  appendHTML2 +`<li class="slds-accordion__list-item accordian_click">
     <section class="slds-accordion__section">
       <div class="slds-accordion__summary">
         <h2 class="slds-accordion__summary-heading">
@@ -229,6 +229,10 @@ $(document).ready(function () {
 		});
 	}
 
+	$(".accordian_click").on("click", function(){
+		$('.slds-accordion__section').removeClass('slds-is-open');
+		$(this).find('.slds-accordion__section').addClass('slds-is-open');
+	});
 	$("#close").on("click", function(){
 		$("#modal").css("display","none");
 	});
