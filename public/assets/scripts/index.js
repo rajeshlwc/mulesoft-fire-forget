@@ -213,25 +213,6 @@ function loadClick(){
 				}
 			}
 				 
-			
-
-				$.each(result.data.messages, function (i, row) {
-					appendHTML =
-						appendHTML +
-						`<tr class="slds-hint-parent">
-                <td role="gridcell">
-                  <div class="slds-truncate" title="Company One">
-                    ${row.message}
-                  </div>
-                </td>
-                <td role="gridcell">
-                  <div class="slds-truncate" title="Director of Operations">
-                    ${row.source}
-                  </div>
-                </td>
-							</tr>`;
-					});
-			//	$('#tablebody').prepend(appendHTML);
 				//$('#ordercontainer').append(appendHTML1);
 				$('#accordian').append(appendHTML2);
 				loadClick();
