@@ -63,7 +63,7 @@ $(document).ready(function () {
 				console.log(result);
 				var appendHTML = '';
 				var appendHTML1 = '';
-
+				var appendHTML2 = '';
 			
 
 			if(result.data.messages.length === 0){
@@ -75,10 +75,77 @@ $(document).ready(function () {
 				 }, {});
 				for (var k in orders){
 
+
 					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
+
+					appendHTML2 =  appendHTML2 +`<li class="slds-accordion__list-item">
+    <section class="slds-accordion__section slds-is-open">
+      <div class="slds-accordion__summary">
+        <h2 class="slds-accordion__summary-heading">
+          <button class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="referenceId-39" aria-expanded="true" title="Accordion summary">
+            <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+            </svg>
+            <span class="slds-accordion__summary-content">Order Id #  ${k}</span>
+          </button>
+        </h2>
+      </div>
+      <div class="slds-accordion__content" id="referenceId-39">`;
+
+			let newString= '';
 					$.each(orders[k], function (i, row) {
 						appendHTML1 = appendHTML1 +`	<div style="margin-top:10px">Item ${i+1}</div>
+						<ul class="slds-page-header__detail-list">
+							<li class="slds-page-header__detail-item">
+								<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
+								<div title="Burlington Textile Weaving Plant Generator">
+									<a href="javascript:void(0);">  ${row.productname}</a>
+								</div>
+							</li>
+							<li class="slds-page-header__detail-item">
+								<div class="slds-text-title slds-truncate" title="Address (2)"> Shipping Address
+								
+								</div>
+								<div title="Multiple Values">
+								${row.shippingaddress}
+								</div>
+							</li>
+							<li class="slds-page-header__detail-item">
+								<div class="slds-text-title slds-truncate" title="Close Date">Order Start Date</div>
+								<div title="11/1/2018"> ${row.createddate}</div>
+							</li>
+							<li class="slds-page-header__detail-item">
+								<div class="slds-text-title slds-truncate" title="Opportunity Owner">Owner</div>
+								<div title="Hyperlink">
+									<div class="slds-media slds-media_small">
+										<div class="slds-media__figure">
+											<span class="slds-avatar slds-avatar_circle slds-avatar_x-small">
+												<img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar" />
+											</span>
+										</div>
+										<div class="slds-media__body">
+											<a href="javascript:void(0);">${row.owner}</a>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="slds-page-header__detail-item">
+								<div class="slds-text-title slds-truncate" title="Amount">Price</div>
+								<div title="$375,000.00">${row.price}</div>
+							</li>
+							<li class="slds-page-header__detail-item">
+							<div class="slds-text-title slds-truncate" > Quantity
+							
+							</div>
+							<div title="Multiple Values">
+							${row.quantity}
+							</div>
+						</li>
+						</ul>
+						<hr/>
+					`
+					newString = newString +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
@@ -131,10 +198,9 @@ $(document).ready(function () {
 
 					});
 
-					
-					
-				
-
+				appendHTML2 = 	appendHTML2 + newString+`Accordion details - A</div>
+    </section>
+  </li>`;
 				}
 			}
 				 
@@ -158,6 +224,7 @@ $(document).ready(function () {
 					});
 			//	$('#tablebody').prepend(appendHTML);
 				$('#ordercontainer').append(appendHTML1);
+				$('#accordian').append(appendHTML2);
 			},
 		});
 	}
