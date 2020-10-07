@@ -81,8 +81,8 @@ function loadClick(){
 					return r;
 				 }, {});
 				for (var k in orders){
-
-
+					
+         let startDt = new Date(orders[k][0].createddate).toLocaleDateString()
 					appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
 
@@ -95,7 +95,8 @@ function loadClick(){
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg>
             <span class="slds-accordion__summary-content">Order Id #  ${k}</span>
-          </button>
+					</button>
+					<span style="float:right">${startDt}</span>
         </h2>
       </div>
       <div class="slds-accordion__content" id="${k}">`;
