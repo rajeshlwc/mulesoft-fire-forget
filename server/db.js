@@ -38,7 +38,7 @@ const parseMessages = (res) => {
 const fetchMessages = () => {
   const selectMessages = `
       SELECT orderid, productname, source,price,quantity,status,createddate,orderowner, shippingaddress, billingaddress
-      FROM orders
+      FROM orders order by  createddate desc
   `;
   
   // Prevent SQL injection using parametrized queries
