@@ -27,7 +27,7 @@ function loadClick(){
 
 			var arr3 = arr[1].split("/");
 
-			var host = arr3[0];
+			var host = arr1[1];
 
 			var port = 5672;
 			var database = arr3[1];
