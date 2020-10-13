@@ -46,6 +46,7 @@ function loadClick(){
 			$("#url").append(URL);
 			$("#username").append(userName);
 			$("#password").append(password);
+			$("#host").append(host);
 		},
 	});
 
