@@ -25,9 +25,9 @@ function loadClick(){
 			var password = arr1[0];
 		
 
-			var arr3 = arr[1].split("/");
+			var arr3 = arr1[1].split("/");
 
-			var host = arr1[1];
+			var host = arr3[0];
 
 			var port = 5672;
 			var database = arr3[1];
@@ -47,6 +47,7 @@ function loadClick(){
 			$("#username").append(userName);
 			$("#password").append(password);
 			$("#host").append(host);
+			$("#vhost").append(database);
 		},
 	});
 
