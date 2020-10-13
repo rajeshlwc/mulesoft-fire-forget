@@ -9,8 +9,13 @@ function loadClick(){
 	$.ajax("/dataurl", {
 		success: function (data, status, xhr) {
 			// success callback function
+		if(data.includes('amqp://')){
 			data = data.replace("amqp://", "");
+		}
 
+		if(data.includes('amqps://')){
+			data = data.replace("amqps://", "");
+		}
 			var arr = data.split(":");
 
 			var userName = arr[0];
