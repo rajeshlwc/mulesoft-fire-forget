@@ -69,7 +69,7 @@ const insertMessage = (message) => {
   console.log(msg.message);
 
 
-  var qty = parseInt(msg.message.Quantity) || 0;
+  var qty = parseInt(msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.TARGET_QTY) || 0;
   var businessAddress = msg.message.BillingAddress || 'NA';
   var shippingAddress = msg.message.shippingAddress || 'NA';
   var createdDate =  msg.message.createdDate || 'NA';
