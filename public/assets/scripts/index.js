@@ -101,7 +101,7 @@ function loadClick(){
             <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg>
-            <span class="slds-accordion__summary-content">Order Id #  ${k}</span>
+            <span class="slds-accordion__summary-content">MATERIAL #  ${k}</span>
 					</button>
 					<span style="float:right">${startDt}</span>
         </h2>
@@ -164,7 +164,7 @@ function loadClick(){
 					newString = newString +`	<div style="margin-top:10px">Item ${i+1}</div>
 						<ul class="slds-page-header__detail-list">
 							<li class="slds-page-header__detail-item">
-								<div class="slds-text-title slds-truncate" title="Field 1">Product</div>
+								<div class="slds-text-title slds-truncate" title="Field 1">ITM NAME</div>
 								<div title="Burlington Textile Weaving Plant Generator">
 									<a href="javascript:void(0);">  ${row.productname}</a>
 								</div>
@@ -201,7 +201,7 @@ function loadClick(){
 								<div title="$375,000.00">${row.price}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
-							<div class="slds-text-title slds-truncate" > Quantity
+							<div class="slds-text-title slds-truncate" > TARGET QTY
 							
 							</div>
 							<div title="Multiple Values">
