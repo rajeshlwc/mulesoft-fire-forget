@@ -178,7 +178,7 @@ function loadClick(){
 								</div>
 							</li>
 							<li class="slds-page-header__detail-item">
-								<div class="slds-text-title slds-truncate" title="Close Date">Order Start Date</div>
+								<div class="slds-text-title slds-truncate" title="Close Date">Item Start Date</div>
 								<div title="11/1/2018"> ${dt}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
