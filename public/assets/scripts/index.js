@@ -89,7 +89,8 @@ function loadClick(){
 				 }, {});
 				for (var k in orders){
 					
-         let startDt = new Date(orders[k][0].createddate).toLocaleDateString()
+				// let startDt = new Date(orders[k][0].createddate).toLocaleDateString()
+				let startDt = orders[k][0].createddate;
 				//	appendHTML1 = appendHTML1 +`	<h1><span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)">Order Id #  ${k}</span></h1>`;
 					
 
@@ -130,7 +131,7 @@ function loadClick(){
 							</li>
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Close Date">ITEM START DT</div>
-								<div title="11/1/2018"> ${dt}</div>
+								<div title="11/1/2018"> ${row.createddate}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
 								<div class="slds-text-title slds-truncate" title="Opportunity Owner">OWNER</div>
