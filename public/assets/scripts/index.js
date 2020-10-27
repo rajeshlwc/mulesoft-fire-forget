@@ -170,7 +170,7 @@ function loadClick(){
 								</div>
 							</li>
 							<li class="slds-page-header__detail-item">
-								<div class="slds-text-title slds-truncate" title="Address (2)"> Shipping Address
+								<div class="slds-text-title slds-truncate" title="Address (2)"> SHIPPING ADDR
 								
 								</div>
 								<div title="Multiple Values">
@@ -178,7 +178,7 @@ function loadClick(){
 								</div>
 							</li>
 							<li class="slds-page-header__detail-item">
-								<div class="slds-text-title slds-truncate" title="Close Date">Item Start Date</div>
+								<div class="slds-text-title slds-truncate" title="Close Date">ITEM START DT</div>
 								<div title="11/1/2018"> ${dt}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
@@ -197,7 +197,7 @@ function loadClick(){
 								</div>
 							</li>
 							<li class="slds-page-header__detail-item">
-								<div class="slds-text-title slds-truncate" title="Amount">Price</div>
+								<div class="slds-text-title slds-truncate" title="Amount">COST</div>
 								<div title="$375,000.00">${row.price}</div>
 							</li>
 							<li class="slds-page-header__detail-item">
