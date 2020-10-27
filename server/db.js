@@ -65,21 +65,17 @@ const insertMessage = (message) => {
 
   var msg = JSON.parse(message);
 
-  console.log(msg.source);
-  console.log(msg.message);
-
-
   var qty = parseInt(msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.TARGET_QTY) || 0;
-  var businessAddress = msg.message.BillingAddress || 'NA';
-  var shippingAddress = msg.message.shippingAddress || 'NA';
-  var createdDate =  msg.message.createdDate || 'NA';
-  var owner =  msg.message.Owner || 'NA';
+  var businessAddress = msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.BILLING_ADDR || 'NA';
+  var shippingAddress = msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.SHIPPING_ADDR || 'NA';
+  var createdDate =  msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.ORDER_START || 'NA';
+  var owner =  msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.OWNER || 'NA';
 
   //const insertMsg = `Insert into rabbit_queue values ('${msg.message.orderId}', '${msg.source}')`;
 
   const insertMsg = `Insert into orders (orderId, productName, price,quantity, status,billingAddress,shippingAddress,createddate,orderowner,  source) 
-                      values ('${msg.message.orderId}','${msg.message.product}','${msg.message.price}'
-                      ,'${qty}','${msg.message.Status}','${businessAddress}','${shippingAddress}' ,'${createdDate}' ,'${owner}' , '${msg.source}')`;
+                      values ('${msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.ITM_NUMBER}','${msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.MATERIAL}','${msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.COST}'
+                      ,'${qty}','${msg.BAPI_SALESORDER_CREATEFROMDAT2.tables.ORDER_ITEMS_IN.STATUS}','${businessAddress}','${shippingAddress}' ,'${createdDate}' ,'${owner}' , '${msg.source}')`;
 
 return pool.connect()
       .then((client) => {
