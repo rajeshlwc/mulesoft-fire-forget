@@ -29,7 +29,7 @@ const parseMessages = (res) => {
           owner:row.orderowner,
           quantity:row.quantity,
           billingaddress: row.billingaddress,
-          shippingaddress: row.shippingaddress,
+          shippingaddress: row.billingaddress,
           status: row.status
       };
   });
