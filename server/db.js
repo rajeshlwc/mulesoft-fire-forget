@@ -44,7 +44,7 @@ const fetchMessages = () => {
   // Prevent SQL injection using parametrized queries
   return pool.connect()
       .then((client) => {
-        
+        	console.log("connected");
           return constructQuery(client, selectMessages)
               .then((res) => {
                   client.release();
