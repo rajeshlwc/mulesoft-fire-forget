@@ -1,15 +1,16 @@
-const { Pool } = require('pg');
+const { Pool } = require("pg");
 const assert = require('assert');
 
 const connString =
 	"";
 
-const pool = new Pool({
+  const pool = new Pool({
     connectionString: process.env.DATABASE_URL || connString,
     ssl: {
       rejectUnauthorized: false,
-    }
-});
+    },
+  });
+  
 
 const constructQuery = (client, sql) => {
   return client.query(sql);
@@ -106,32 +107,14 @@ const createTable = ()=>{
 const checkTableExists = `SELECT * FROM pg_catalog.pg_tables where tablename = 'orders'`;
 console.log('Entered');
 console.log(pool);
-pool.connect((err,client,release) => {
-  if (err) {
-    console.log('Error occurred ' + err.stack);
-  }
-  console.log(checkTableExists);
-  client.query(checkTableExists)
+
+pool
+  .query(checkTableExists)
   .then((res) => {
-    console.log ('table exists query done' +  res);
-    console.log(createQuery);
-    if (res.rows.length == 0) {
-      pool.query(createQuery).then((res) => {
-        console.log("Table is successfully created");
-       console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }  
+      console.log(res);
+      console.log(res.rows[0].name);
   })
-  .catch((err) => {
-    console.log(err.stack);
-  })
-  .finally(() => {
-    client.release();
-  });  
-});
+  .catch((err) => {console.log('error checking table ' + err.stack);});
 
 
 /*pool.connect()
