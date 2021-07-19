@@ -20,7 +20,7 @@ app.use('/graphql', graphqlHTTP({
   rootValue: rootValue,
   graphiql: true,  // Enable GraphiQL when server endpoint is accessed in browser
 }));
-
+console.log(process.env.DATABASE_URL);
 createTable();
 function listenForMessages() {
 	open

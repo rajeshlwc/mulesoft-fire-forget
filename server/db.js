@@ -1,9 +1,11 @@
 const { Pool } = require('pg');
 const assert = require('assert');
 
+const connString =
+	"postgres://ecghlsswkmvwbw:088c9195170e656b9a056963e240528e1ba6049677c180f097b08ae78fcb0b62@ec2-18-214-195-34.compute-1.amazonaws.com:5432/dcpg5m1n59dk1f";
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || '',
+    connectionString: process.env.DATABASE_URL || connString,
     ssl: {
       rejectUnauthorized: false,
     }
@@ -89,7 +91,7 @@ return pool.connect()
 
 const createTable = ()=>{
   console.log('attempting to create table');
- const query = `CREATE TABLE Orders (
+ const createQuery = `CREATE TABLE Orders (
     orderid varchar,
     Productname varchar,
     description varchar,
@@ -108,7 +110,28 @@ const checkTableExists = `SELECT
 FROM
 pg_catalog.pg_tables where tablename = 'orders'`;
 console.log('Entered');
-pool.connect()
+pool.connect();
+console.log(checkTableExists);
+pool
+  .query(checkTableExists)
+  .then((res) => {
+    console.log ('table exists query done' +  res);
+    console.log(createQuery);
+    if (res.rows.length == 0) {
+      pool.query(createQuery).then((res) => {
+        console.log("Table is successfully created");
+       console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }  
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+/*pool.connect()
       .then((client) => {
         console.log('console created');
         client.query(checkTableExists).then((res) => {
@@ -130,6 +153,7 @@ pool.connect()
       .catch((err) => {
         console.error(err);
       });
+  */
 
 }
 
