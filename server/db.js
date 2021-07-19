@@ -88,7 +88,7 @@ return pool.connect()
 
 
 const createTable = ()=>{
-
+  console.log('attempting to create table');
  const query = `CREATE TABLE Orders (
     orderid varchar,
     Productname varchar,
@@ -110,7 +110,9 @@ pg_catalog.pg_tables where tablename = 'orders'`;
 console.log('Entered');
 pool.connect()
       .then((client) => {
+        console.log('console created');
         client.query(checkTableExists).then((res) => {
+          console.log('checked table exists' + res);
           if (res.rows.length == 0) {
             pool.query(query).then((res) => {
               console.log("Table is successfully created");
