@@ -39,9 +39,7 @@ const parseMessages = (res) => {
 
 const fetchMessages = () => {
   const selectMessages = `
-      SELECT orderid, productname, source,price,quantity,status,createddate,orderowner, shippingaddress, billingaddress
-      FROM orders order by  orderid desc
-  `;
+      SELECT orderid, productname, source,price,quantity,status,createddate,orderowner, shippingaddress, billingaddress FROM orders order by  orderid desc`;
   
   // Prevent SQL injection using parametrized queries
   return pool.connect()
@@ -105,10 +103,7 @@ const createTable = ()=>{
     source varchar
 )`;
 
-const checkTableExists = `SELECT
-*
-FROM
-pg_catalog.pg_tables where tablename = 'orders'`;
+const checkTableExists = `SELECT * FROM pg_catalog.pg_tables where tablename = 'orders'`;
 console.log('Entered');
 pool.connect();
 console.log(checkTableExists);
@@ -123,12 +118,12 @@ pool
        console.log(res);
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
       });
     }  
   })
   .catch((err) => {
-    console.error(err);
+    console.log(err);
   });
 
 /*pool.connect()
