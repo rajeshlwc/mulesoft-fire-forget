@@ -105,10 +105,13 @@ const createTable = ()=>{
 
 const checkTableExists = `SELECT * FROM pg_catalog.pg_tables where tablename = 'orders'`;
 console.log('Entered');
-pool.connect();
-console.log(checkTableExists);
-pool
-  .query(checkTableExists)
+console.log(pool);
+pool.connect((err,client,release) => {
+  if (err) {
+    console.log('Error occurred ' + err.stack);
+  }
+  console.log(checkTableExists);
+  client.query(checkTableExists)
   .then((res) => {
     console.log ('table exists query done' +  res);
     console.log(createQuery);
@@ -123,8 +126,13 @@ pool
     }  
   })
   .catch((err) => {
-    console.log(err);
-  });
+    console.log(err.stack);
+  })
+  .finally(() => {
+    client.release();
+  });  
+});
+
 
 /*pool.connect()
       .then((client) => {
