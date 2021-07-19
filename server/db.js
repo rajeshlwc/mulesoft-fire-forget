@@ -126,6 +126,9 @@ pool.connect()
           //pool.end();
           client.release();
         });;
+      })
+      .catch((err) => {
+        console.error(err);
       });
 
 }
