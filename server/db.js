@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 const assert = require('assert');
 
 const connString =
-	"postgres://ecghlsswkmvwbw:088c9195170e656b9a056963e240528e1ba6049677c180f097b08ae78fcb0b62@ec2-18-214-195-34.compute-1.amazonaws.com:5432/dcpg5m1n59dk1f";
+	"";
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL || connString,
